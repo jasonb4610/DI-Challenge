@@ -73,7 +73,7 @@ Email = jabell4610@gmail.com
 Password = /;9+x(-|B .n;6|4>5?*<.n~Q
 ```
 
-If there are any questions at all about any of this please don't hesistate to reach out to me. I'd be happy to answer them if something is not working or you're just curious about any particular part.
+If there are any questions at all about any of this please don't hesitate to reach out to me. I'd be happy to answer them if something is not working or you're just curious about any particular part.
 
 [Another relatively recent public project I did for a gaming group.](https://github.com/jasonb4610/Keystonebot) This was was all done as a node service for a disord bot. Pretty basic stuff but it was fun to work on.
 
