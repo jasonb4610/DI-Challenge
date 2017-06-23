@@ -70,6 +70,7 @@ class ContactHelper {
     protected function sendContactRequestEmail($emailOptions, Contact $contact) {
         Mail::send('emails.contact', $emailOptions, function($message) {
             $message->from('contact@example.com', 'Contact Request');
+            $message->to('guy-smiley@example.com', 'Guy Smiley');
             $message->subject('Contact request');
         });
         if (count(Mail::failures()) > 0) {
