@@ -39,9 +39,10 @@ class ContactFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => ['required', 'regex:/[a-zA-Z\\ ]/'],
             'email' => 'required|email',
-            'message' => 'required'
+            'message' => ['required', 'regex:/[a-zA-Z0-9_\\-\\ ]/'],
+            'phone' => 'numeric|nullable'
         ];
     }
 }
