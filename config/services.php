@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'mg.devolution757.com',
+        'secret' => 'key-efdc255c74d8d1924c19d6c049956c3a',
     ],
 
     'ses' => [

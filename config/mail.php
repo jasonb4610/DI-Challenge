@@ -16,7 +16,8 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => 'mailgun',
+    //'driver' => 'log',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    //'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +43,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    //'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -58,6 +59,13 @@ return [
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
+    /*
+     * Global 'To' Address for testing purposes
+     */
+    'to' => [
+        'address' => 'jabell4610@gmail.com',
+        'name' => 'Jason Bell'
     ],
 
     /*
@@ -84,9 +92,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    //'username' => env('MAIL_USERNAME'),
 
-    'password' => env('MAIL_PASSWORD'),
+    //'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
