@@ -19,7 +19,7 @@ composer install
 php artisan key:generate
 ```
 
-Once those two tasks are completed, refer to the following for proper environment configuration. All that is modified here is the information for the database connection and I've removed a fair bit from the entire file in my cases as well which you can do at your discretion.
+Once those tasks are completed, refer to the following for proper environment configuration. All that is modified here is the information for the database connection and I've removed a fair bit from the entire file in my case which you can do at your discretion.
 
 ```
 APP_NAME=Laravel
@@ -72,4 +72,6 @@ php -S 127.0.0.1:9999 -t public
 Email = jabell4610@gmail.com
 Password = /;9+x(-|B .n;6|4>5?*<.n~Q
 ```
+
+If there are any questions at all about any of this please don't hesistate to reach out to me. I'd be happy to answer them if something is not working or you're just curious about any particular part.
 
