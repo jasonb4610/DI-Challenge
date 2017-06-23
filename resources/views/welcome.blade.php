@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf_token" content="{{ csrf_token() }}">
 
     <title>Dealer Inspire Code Challenge</title>
 
@@ -21,6 +22,8 @@
 
     <!-- Theme CSS -->
     <link href="css/grayscale.min.css" rel="stylesheet">
+    <!-- SweetAlert CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -125,17 +128,17 @@
                     <div class="form-group">
                     <?php
                     echo Form::label('name', 'Your full name', ['class' => 'text-left']);
-                    echo Form::text('name', '', ['placeholder' => 'John Doe', 'class' => 'form-control']);
+                    echo Form::text('name', '', ['placeholder' => 'John Doe', 'class' => 'form-control', 'id' => 'contact-form-name']);
                     echo Form::label('email', 'E-Mail Address', ['class' => 'text-left']);
-                    echo Form::text('email', '', ['placeholder' => 'example@test.com', 'class' => 'form-control']);
+                    echo Form::text('email', '', ['placeholder' => 'example@test.com', 'class' => 'form-control', 'id' => 'contact-form-email']);
                     echo Form::label('phone', 'Your phone number (optional)', ['class' => 'text-left']);
-                    echo Form::text('phone', '', ['placeholder' => '757-650-9978', 'class' => 'form-control']);
+                    echo Form::text('phone', '', ['placeholder' => '757-650-9978', 'class' => 'form-control', 'id' => 'contact-form-phone']);
                     echo Form::label('message', 'Your message', ['class' => 'text-left']);
-                    echo Form::textarea('message', '', ['placeholder' => 'Enter your message here. We\'ll love to hear what you have to say!', 'class' => 'form-control']); ?>
+                    echo Form::textarea('message', '', ['placeholder' => 'Enter your message here. We\'ll love to hear what you have to say!', 'class' => 'form-control', 'id' => 'contact-form-message']); ?>
                     <br />
                     <?php
-                    echo Form::submit('Send message!', ['class' => 'btn btn-success']);
-                    echo Form::button('Clear form', ['class' => 'btn btn-primary']);
+                    echo Form::submit('Send message!', ['class' => 'btn btn-success', 'id' => 'contact-form-submit']);
+                    echo Form::button('Clear form', ['class' => 'btn btn-primary', 'id' => 'contact-form-clear']);
                     ?>
                     </div>
                 {!! Form::close() !!}
@@ -164,10 +167,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
     <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjQvk6LIxHslrkVyXAJ3xNvBHOCpy4do8&sensor=false"></script>
 
     <!-- Theme JavaScript -->
     <script src="js/grayscale.min.js"></script>
+
+    <!-- Form Javascript -->
+    <script type="text/javascript" src="js/contactForm.js"></script>
+
+    <!-- SweetAlert Javascript CDN -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
+
 
 </body>
 
