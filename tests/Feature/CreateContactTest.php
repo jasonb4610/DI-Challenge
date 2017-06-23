@@ -5,12 +5,14 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+
 class CreateContactTest extends TestCase
 {
     use DatabaseTransactions;
 
     public function testValidStatusReturnedFromCreateContactNoPhone()
     {
+        config(['mail.driver' => 'log']);
         $data = ['name' => 'Jason Bell', 'email' => 'test@bob.com', 'message' => 'This is a message', 'phone' => ''];
 
         $response = $this->json('post', '/ajax-contact-form', $data);
@@ -20,6 +22,7 @@ class CreateContactTest extends TestCase
 
     public function testValidDataReturnedFromCreateContactNoPhone()
     {
+        config(['mail.driver' => 'log']);
         $data = ['name' => 'Jason Bell', 'email' => 'test@bob.com', 'message' => 'This is a message', 'phone' => ''];
 
         $response = $this->json('post', '/ajax-contact-form', $data);
@@ -28,7 +31,9 @@ class CreateContactTest extends TestCase
         $response->assertExactJson($expectedData);
     }
 
-    public function testValidStatusReturnedFromCreateContactWithPhone() {
+    public function testValidStatusReturnedFromCreateContactWithPhone() 
+    {
+        config(['mail.driver' => 'log']);
         $data = ['name' => 'Jason Bell', 'email' => 'test@bob.com', 'message' => 'This is a message', 'phone' => '7576509978'];
 
         $response = $this->json('post', '/ajax-contact-form', $data);
@@ -38,6 +43,7 @@ class CreateContactTest extends TestCase
 
     public function testValidDataReturnedFromCreateContactWithPhone()
     {
+        config(['mail.driver' => 'log']);
         $data = ['name' => 'Jason Bell', 'email' => 'test@bob.com', 'message' => 'This is a message', 'phone' => '7576509978'];
 
         $response = $this->json('post', '/ajax-contact-form', $data);
@@ -99,7 +105,7 @@ class CreateContactTest extends TestCase
 
         $response = $this->json('post', '/ajax-contact-form', $data);
 
-        $expectedData = ['message' => ['The message form is invalid.']];
+        $expectedData = ['message' => ['The message format is invalid.']];
         $response->assertJson($expectedData);
     }
 
