@@ -116,21 +116,26 @@
                 <h2>Contact Guy Smiley</h2>
                 <p>Remember Guy Smiley?  Yeah, he wants to hear from you.</p>
                 <p class="bg-primary">
-                {!! Form::open(['url' => 'foo/bar']) !!}
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                {!! Form::open(['url' => '/ajax-contact-form']) !!}
                     <div class="form-group">
                     <?php
                     echo Form::label('name', 'Your full name', ['class' => 'text-left']);
-                    echo Form::text('name', 'John Doe', ['class' => 'form-control']);
+                    echo Form::text('name', '', ['placeholder' => 'John Doe', 'class' => 'form-control']);
                     echo Form::label('email', 'E-Mail Address', ['class' => 'text-left']);
-                    echo Form::text('email', 'example@test.com', ['class' => 'form-control']);
+                    echo Form::text('email', '', ['placeholder' => 'example@test.com', 'class' => 'form-control']);
                     echo Form::label('phone', 'Your phone number (optional)', ['class' => 'text-left']);
-                    echo Form::text('phone', '757-650-9978', ['class' => 'form-control']);
+                    echo Form::text('phone', '', ['placeholder' => '757-650-9978', 'class' => 'form-control']);
                     echo Form::label('message', 'Your message', ['class' => 'text-left']);
-                    echo Form::textarea('message', 'Enter your message here. We\'ll love to hear what you have to say!', ['class' => 'form-control']); ?>
+                    echo Form::textarea('message', '', ['placeholder' => 'Enter your message here. We\'ll love to hear what you have to say!', 'class' => 'form-control']); ?>
                     <br />
                     <?php
-                    echo Form::submit('Send message!', ['class' => 'btn btn-primary']);
-                    echo Form::button('Clear form', ['class' => 'btn btn-secondary']);
+                    echo Form::submit('Send message!', ['class' => 'btn btn-success']);
+                    echo Form::button('Clear form', ['class' => 'btn btn-primary']);
                     ?>
                     </div>
                 {!! Form::close() !!}
