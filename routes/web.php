@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/ajax-contact-form',
+    ['as' => 'ajax-contact-form', 'uses' => 'FormController@ajaxContactForm']);

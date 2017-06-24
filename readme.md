@@ -1,51 +1,80 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## Jason Bell - Dealer Inspire Code Challenge
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+I ended up taking a bit more time that I felt I was going to by integrating the stuff you guys passed on into a Laravel project. Lots of things turned out really well, but it certainly added a level of complexity I hadn't initially planned for. I'm including below the installation procedures and set up requirements needed for the project. Most of everything is handled by just cloning the repo and running composer but a few database commands need to be run, environment variables set, and running a few artisan commands.
 
-## About Laravel
+I've also set up mail transport service with mailgun. I'll provided the credentials for my account below as this is the only thing I've used it for or if you have some you want to supply just add in the domain and API key in the config/services.php file. Likewise with the database credentials, I'm providing what I used but those can be overriden if you need for any reason.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+Aside from the standard Laravel (5.4) components and the css/js/image assets included with the challenge, I've only integrated three extra libraries.
+- [Laravel collective html library for easier form creation](https://github.com/LaravelCollective/html)
+- [Guzzle library for mail transport handling](https://github.com/guzzle/guzzle)
+- [Sweet Alert 2 for pretty alert messages](https://limonte.github.io/sweetalert2/)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+## Application Installation
 
-## Learning Laravel
+```
+git clone https://github.com/jasonb4610/DI-Challenge.git [TARGET_DIRECTORY]
+cd [TARGET_DIRECTORY]
+composer install
+php artisan key:generate
+```
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+Once those tasks are completed, refer to the following for proper environment configuration. All that is modified here is the information for the database connection and I've removed a fair bit from the entire file in my case which you can do at your discretion.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+```
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:****************************************
+APP_DEBUG=true
+APP_LOG_LEVEL=debug
+APP_URL=http://localhost
 
-## Laravel Sponsors
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=di_challenge
+DB_USERNAME=di_challenge
+DB_PASSWORD=7kV1VR6a3r5S2XsDyN3VbqwOm
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sync
+```
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+Now run the following commands to prepare the database instance for this application, including creation of a user and the database itself. Structure will be handled by artisan commands.
 
-## Contributing
+```
+mysql> CREATE USER 'di_challenge'@'localhost' IDENTIFIED BY '7kV1VR6a3r5S2XsDyN3VbqwOm';
+mysql> CREATE DATABASE di_challenge;
+mysql> GRANT ALL ON di_challenge.* TO 'di_challenge'@'localhost';
+mysql> FLUSH PRIVILEGES;
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+I would probably check to make sure the user created can access the database created just in case, but all should be OK.
+At this point the configuration is all done and we just need to initialize the database migrations and apply the initial structure for the database. Run the following two artisan commands.
 
-## Security Vulnerabilities
+```
+php artisan migrate:install
+php artisan migrate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Fire it all up with the built in php webserver.
 
-## License
+```
+php -S 127.0.0.1:9999 -t public
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+## Other information
+
+[Mailgun Login Credentials](https://app.mailgun.com/sessions/new)
+If you do use mine, please don't abuse it. I had to provide payment information for it to send to anyone other than 'verified' accounts of which guy-smiley@example.com fell into so just don't send a few thousand emails in the next few days and I should be ok.
+```
+Email = jabell4610@gmail.com
+Password = /;9+x(-|B .n;6|4>5?*<.n~Q
+```
+
+If there are any questions at all about any of this please don't hesitate to reach out to me. I'd be happy to answer them if something is not working or you're just curious about any particular part.
+
+[Another relatively recent public project I did for a gaming group.](https://github.com/jasonb4610/Keystonebot) This was was all done as a node service for a disord bot. Pretty basic stuff but it was fun to work on.
+

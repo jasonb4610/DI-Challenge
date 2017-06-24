@@ -12,3 +12,5 @@ npm-debug.log
 .settings
 .buildpath
 .project
+
+composer.lock
