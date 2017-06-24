@@ -1,0 +1,8 @@
+#contact .form-group input::selection {
+    background: #0095ff;
+    color: #ffffff;
+}
+
+#contact .form-group label {
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

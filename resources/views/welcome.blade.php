@@ -24,6 +24,8 @@
     <link href="css/grayscale.min.css" rel="stylesheet">
     <!-- SweetAlert CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css" rel="stylesheet">
+    <!-- Site specific CSS -->
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -127,13 +129,13 @@
                 {!! Form::open(['url' => '/ajax-contact-form']) !!}
                     <div class="form-group">
                     <?php
-                    echo Form::label('name', 'Your full name', ['class' => 'text-left']);
+                    echo Form::label('name', 'Your full name');
                     echo Form::text('name', '', ['placeholder' => 'John Doe', 'class' => 'form-control', 'id' => 'contact-form-name']);
-                    echo Form::label('email', 'E-Mail Address', ['class' => 'text-left']);
+                    echo Form::label('email', 'E-Mail Address');
                     echo Form::text('email', '', ['placeholder' => 'example@test.com', 'class' => 'form-control', 'id' => 'contact-form-email']);
-                    echo Form::label('phone', 'Your phone number (optional)', ['class' => 'text-left']);
+                    echo Form::label('phone', 'Your phone number (optional)');
                     echo Form::text('phone', '', ['placeholder' => '757-650-9978', 'class' => 'form-control', 'id' => 'contact-form-phone']);
-                    echo Form::label('message', 'Your message', ['class' => 'text-left']);
+                    echo Form::label('message', 'Your message');
                     echo Form::textarea('message', '', ['placeholder' => 'Enter your message here. We\'ll love to hear what you have to say!', 'class' => 'form-control', 'id' => 'contact-form-message']); ?>
                     <br />
                     <?php
