@@ -68,6 +68,7 @@ php -S 127.0.0.1:9999 -t public
 ## Other information
 
 [Mailgun Login Credentials](https://app.mailgun.com/sessions/new)
+If you do use mine, please don't abuse it. I had to provide payment information for it to send to anyone other than 'verified' accounts of which guy-smiley@example.com fell into so just don't send a few thousand emails in the next few days and I should be ok.
 ```
 Email = jabell4610@gmail.com
 Password = /;9+x(-|B .n;6|4>5?*<.n~Q
